@@ -1,0 +1,41 @@
+C++ program to search the number of occurrences of any word and string.
+
+/ Importing the libraries
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+// Main function to count the number of occurrences
+int CountOccurrences(char * str, char * word) 
+{
+    int count = 0;
+    int strLen = strlen(str);
+    int wordLen = strlen(word);
+    int j;
+
+    for (int i = 0; i <= strLen; i++) 
+    {
+        for (j = 0; j < wordLen; j++) 
+        {
+            if (str[i + j] != word[j]) 
+            {
+                break;
+            }
+        }
+        if (j == wordLen) 
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
+// Main Function
+int main() 
+{
+    // Sample input
+    char word[] = "CSE";
+    char sentence[] = "This is CSE Dual Degree course. CSE is now a backbone technology";
+    cout << "Occurrences : " << CountOccurrences(sentence, word);
+    return 0;
+}
