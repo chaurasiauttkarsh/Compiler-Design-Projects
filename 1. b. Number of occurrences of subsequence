@@ -1,0 +1,34 @@
+// Importing libraries
+#include <iostream> 
+using namespace std; 
+  
+// Recursive function
+int count(string a, string b, int m, int n) 
+{ 
+    // If both first and second string is empty, or if second string is empty, return 1 
+    if ((m == 0 && n == 0) || n == 0) 
+        return 1; 
+  
+    // If only first string is empty and second string is not empty, return 0 
+    if (m == 0) 
+        return 0; 
+  
+    // If last characters are same recur for remaining strings
+    if (a[m - 1] == b[n - 1]) 
+        return count(a, b, m - 1, n - 1) + 
+               count(a, b, m - 1, n); 
+    else
+        // recur for remaining string 
+        return count(a, b, m - 1, n); 
+} 
+  
+// Main function
+int main() 
+{ 
+    // Sample input
+    string a = "banana"; 
+    string b = "na"; 
+  
+    cout << count(a, b, a.size(), b.size()) << endl; 
+    return 0; 
+} 
